@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ff7e5f, #feb47b, #86a8e7, #91eae4);    
+      background-attachment: fixed; 
+      color: #333;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background: #2d3e50;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      color: #fff;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 25px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      background: #00aaff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0077cc;
+    }
+    .nav-btns a {
+      display: block;
+      text-decoration: none;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="login-box">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    
+    <h3>Go to:</h3>
+    <div class="nav-btns">
+      <a href="m.html"><button>Movies</button></a>
+      <a href="c.html"><button>Car</button></a>
+      <a href="t.html"><button>Trains</button></a>
+      <a href="f.html"><button>Flights</button></a>
+      <a href="b.html"><button>Bus</button></a>
+      <a href="concert.html"><button>Concert</button></a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

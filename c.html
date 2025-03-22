@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concert Booking</title>
+    <title>Car Booking</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
             color: #333;
         }
         header {
-            background: #673ab7;
+            background: #4caf50;
             color: #fff;
             padding: 15px;
             text-align: center;
@@ -23,7 +23,7 @@
             justify-content: space-around;
             padding: 20px;
         }
-        .concert-card {
+        .car-card {
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -31,13 +31,13 @@
             padding: 15px;
             text-align: center;
         }
-        .seats {
+        .cars {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             padding: 15px 0;
         }
-        .seat {
+        .car {
             width: 70px;
             height: 70px;
             background: #1e88e5;
@@ -48,66 +48,72 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        .seat.selected {
+        .car.selected {
             background: #f44336;
         }
         button {
             padding: 10px 20px;
             border: none;
-            background: #673ab7;
+            background: #4caf50;
             color: white;
             cursor: pointer;
             transition: 0.3s;
         }
         button:hover {
-            background: #512da8;
+            background: #388e3c;
         }
     </style>
 </head>
 <body>
+
 <header>
-    <h1>Concert Booking</h1>
+    <h1>Car Booking</h1>
 </header>
 <div class="container">
-    <div class="concert-card">
-        <h2>Concert: Rock Night</h2>
-        <p>Time: 7:00 PM</p>
-        <p>Venue: Stadium A</p>
-        <div class="seats" id="seats1"></div>
-        <button onclick="bookSeats('seats1')">Book</button>
+    <div class="car-card">
+        <h2>Car: Sedan</h2>
+        <p>Pickup: 10:00 AM</p>
+        <p>Drop-off: 2:00 PM</p>
+        <div class="cars" id="cars1"></div>
+        <button onclick="bookCars('cars1')">Book</button>
     </div>
-    <div class="concert-card">
-        <h2>Concert: Jazz Fest</h2>
-        <p>Time: 9:00 PM</p>
-        <p>Venue: Arena B</p>
-        <div class="seats" id="seats2"></div>
-        <button onclick="bookSeats('seats2')">Book</button>
+
+    <div class="car-card">
+        <h2>Car: SUV</h2>
+        <p>Pickup: 3:00 PM</p>
+        <p>Drop-off: 7:00 PM</p>
+        <div class="cars" id="cars2"></div>
+        <button onclick="bookCars('cars2')">Book</button>
     </div>
 </div>
+
 <script>
-    function createSeats(id) {
+    function createCars(id) {
         const container = document.getElementById(id);
-        for (let i = 0; i < 16; i++) {
-            const seat = document.createElement('div');
-            seat.classList.add('seat');
-            seat.textContent = `Seat ${i + 1}`;
-            seat.onclick = () => seat.classList.toggle('selected');
-            container.appendChild(seat);
+        for (let i = 0; i < 8; i++) {
+            const car = document.createElement('div');
+            car.classList.add('car');
+            car.textContent = `Car ${i + 1}`;
+            car.onclick = () => car.classList.toggle('selected');
+            container.appendChild(car);
         }
     }
-    function bookSeats(id) {
-        const seats = document.querySelectorAll(`#${id} .seat.selected`);
-        if (seats.length > 0) {
-            alert(`${seats.length} seats booked successfully!`);
-            seats.forEach(seat => seat.classList.remove('selected'));
+
+    function bookCars(id) {
+        const cars = document.querySelectorAll(`#${id} .car.selected`);
+        if (cars.length > 0) {
+            alert(`${cars.length} cars booked successfully!`);
+            cars.forEach(car => car.classList.remove('selected'));
         } else {
-            alert('Please select at least one seat.');
+            alert('Please select at least one car.');
         }
     }
+
     window.onload = () => {
-        createSeats('seats1');
-        createSeats('seats2');
+        createCars('cars1');
+        createCars('cars2');
     };
 </script>
+
 </body>
-</html> 
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concert Booking</title>
+    <title>Train Ticket Booking</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
             color: #333;
         }
         header {
-            background: #673ab7;
+            background: #0277bd;
             color: #fff;
             padding: 15px;
             text-align: center;
@@ -23,7 +23,7 @@
             justify-content: space-around;
             padding: 20px;
         }
-        .concert-card {
+        .train-card {
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -33,18 +33,15 @@
         }
         .seats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(8, 1fr);
             gap: 10px;
             padding: 15px 0;
         }
         .seat {
-            width: 70px;
-            height: 70px;
-            background: #1e88e5;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 30px;
+            height: 30px;
+            background: #4caf50;
+            border: 1px solid #ccc;
             border-radius: 5px;
             cursor: pointer;
         }
@@ -54,47 +51,50 @@
         button {
             padding: 10px 20px;
             border: none;
-            background: #673ab7;
+            background: #0277bd;
             color: white;
             cursor: pointer;
             transition: 0.3s;
         }
         button:hover {
-            background: #512da8;
+            background: #01579b;
         }
     </style>
 </head>
 <body>
+
 <header>
-    <h1>Concert Booking</h1>
+    <h1>Train Ticket Booking</h1>
 </header>
 <div class="container">
-    <div class="concert-card">
-        <h2>Concert: Rock Night</h2>
-        <p>Time: 7:00 PM</p>
-        <p>Venue: Stadium A</p>
+    <div class="train-card">
+        <h2>Train: Express 101</h2>
+        <p>Departure: 10:00 AM</p>
+        <p>Arrival: 2:00 PM</p>
         <div class="seats" id="seats1"></div>
         <button onclick="bookSeats('seats1')">Book</button>
     </div>
-    <div class="concert-card">
-        <h2>Concert: Jazz Fest</h2>
-        <p>Time: 9:00 PM</p>
-        <p>Venue: Arena B</p>
+
+    <div class="train-card">
+        <h2>Train: Superfast 202</h2>
+        <p>Departure: 4:00 PM</p>
+        <p>Arrival: 8:00 PM</p>
         <div class="seats" id="seats2"></div>
         <button onclick="bookSeats('seats2')">Book</button>
     </div>
 </div>
+
 <script>
     function createSeats(id) {
         const container = document.getElementById(id);
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < 32; i++) {
             const seat = document.createElement('div');
             seat.classList.add('seat');
-            seat.textContent = `Seat ${i + 1}`;
             seat.onclick = () => seat.classList.toggle('selected');
             container.appendChild(seat);
         }
     }
+
     function bookSeats(id) {
         const seats = document.querySelectorAll(`#${id} .seat.selected`);
         if (seats.length > 0) {
@@ -104,10 +104,12 @@
             alert('Please select at least one seat.');
         }
     }
+
     window.onload = () => {
         createSeats('seats1');
         createSeats('seats2');
     };
 </script>
+
 </body>
-</html> 
+</html>
