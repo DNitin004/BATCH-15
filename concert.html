@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Concert Booking</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, green, yellow);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        header {
+            background-color: #FF7F50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }    
+        .booking-container {
+            background: skyblue;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+        .booking-container h2 {
+            color: black;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid blue;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: green;
+        }
+    </style>
+    <script>
+        function confirmBooking(event) {
+            event.preventDefault(); // Prevent form submission
+            const concertName = document.getElementById('concertName').value;
+            const venue = document.getElementById('venue').value;
+            const email = document.getElementById('email').value;
+            const tickets = document.getElementById('tickets').value;
+            const ticketType = document.getElementById('ticketType').value;
+            const phone = document.getElementById('phone').value;
+
+            // Simulate sending email and SMS (in reality, you would need backend services for this)
+            alert(Booking Confirmed!\nConcert: ${concertName}\nVenue: ${venue}\nEmail: ${email}\nPhone: ${phone}\nTickets: ${tickets}\nTicket Type: ${ticketType}\n\nA confirmation will be sent to your email and phone number.);
+            location.reload(); // Refresh the page after clicking OK
+        }
+    </script>
+</head>
+<body>
+    <div class="booking-container">
+        <h2>Book Your Concert</h2>
+        <form onsubmit="confirmBooking(event)">
+            <div class="form-group">
+                <label for="concertName">Concert Name</label>
+                <select id="concertName" name="concertName" required>
+                    <option value="The Weeknd Live">The Weeknd Live</option>
+                    <option value="Coldplay: Music of the Spheres">Coldplay: Music of the Spheres</option>
+                    <option value="Ed Sheeran: +–=÷× Tour">Ed Sheeran: +–=÷× Tour</option>
+                    <option value="Ariana Grande World Tour">Ariana Grande World Tour</option>
+                    <option value="BTS Permission to Dance">BTS Permission to Dance</option>
+                    <option value="Taylor Swift: The Eras Tour">Taylor Swift: The Eras Tour</option>
+                    <option value="Billie Eilish: Happier Than Ever">Billie Eilish: Happier Than Ever</option>
+                    <option value="Imagine Dragons: Mercury Tour">Imagine Dragons: Mercury Tour</option>
+                    <option value="Travis Scott: Utopia Tour">Travis Scott: Utopia Tour</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="venue">Venue</label>
+                <select id="venue" name="venue" required>
+                    <option value="Madison Square Garden">Madison Square Garden</option>
+                    <option value="Staples Center">Staples Center</option>
+                    <option value="O2 Arena">O2 Arena</option>
+                    <option value="Wembley Stadium">Wembley Stadium</option>
+                    <option value="Sydney Opera House">Sydney Opera House</option>
+                    <option value="Tokyo Dome">Tokyo Dome</option>
+                    <option value="Royal Albert Hall">Royal Albert Hall</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required placeholder="Enter your 10-digit phone number" pattern="^\d{10}$" title="Phone number must be exactly 10 digits.">
+            </div>
+            <div class="form-group">
+                <label for="tickets">Number of Tickets</label>
+                <input type="number" id="tickets" name="tickets" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="ticketType">Ticket Type</label>
+                <select id="ticketType" name="ticketType" required>
+                    <option value="VIP">VIP</option>
+                    <option value="Regular">Regular</option>
+                    <option value="General Admission">General Admission</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Book Now</button>
+        </form>
+    </div>
+</body>
+</html>

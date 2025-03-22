@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Booking</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #141E30, #243B55);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #ddd;
+        }
+
+        select {
+            color: #000;  /* Fix the text color for select option */
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            background: #FF6B6B;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background: #E63946;
+        }
+    </style>
+    <script>
+        function bookCar(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Get form values
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const pickupDate = document.getElementById("pickup-date").value;
+            const dropoffDate = document.getElementById("dropoff-date").value;
+            const carType = document.getElementById("car-type").value;
+
+            // Display confirmation message
+            alert(`Your booking is successful!\n\nDetails:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCar Type: ${carType}\nPickup Date: ${pickupDate}\nDropoff Date: ${dropoffDate}`);
+
+            // Call function to send email and SMS (not implemented yet, would require backend services)
+            sendConfirmationEmail(email, name, pickupDate, dropoffDate, carType);
+            sendConfirmationSMS(phone, name, carType);
+
+            location.reload(); // Refresh the page after clicking OK
+        }
+
+        // Dummy email and SMS sending functions - these would need API integration (e.g., SendGrid, Twilio)
+        function sendConfirmationEmail(email, name, pickupDate, dropoffDate, carType) {
+            // Replace with actual email service like SendGrid or EmailJS
+            console.log(`Sending email to ${email}`);
+            console.log(`Email content: Booking details for ${name} - Car Type: ${carType}, Pickup: ${pickupDate}, Dropoff: ${dropoffDate}`);
+        }
+
+        function sendConfirmationSMS(phone, name, carType) {
+            // Replace with actual SMS service like Twilio
+            console.log(`Sending SMS to ${phone}`);
+            console.log(`SMS content: Your booking for a ${carType} is confirmed, ${name}!`);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Book Your Car Now!</h2>
+        <form onsubmit="bookCar(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email">Email (mandatory):</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="phone">Phone (mandatory):</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+            <label for="pickup-date">Pickup Date:</label>
+            <input type="date" id="pickup-date" name="pickup-date" required>
+
+            <label for="dropoff-date">Dropoff Date:</label>
+            <input type="date" id="dropoff-date" name="dropoff-date" required>
+
+            <label for="car-type">Car Type:</label>
+            <select id="car-type" name="car-type" required>
+                <option value="economy">Economy</option>
+                <option value="compact">Compact</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="standard">Standard</option>
+                <option value="full-size">Full-size</option>
+                <option value="luxury">Luxury</option>
+                <option value="SUV">SUV</option>
+                <option value="van">Van</option>
+            </select>
+
+            <input type="submit" value="Book Now">
+        </form>
+    </div>
+</body>
+</html>
